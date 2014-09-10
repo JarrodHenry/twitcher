@@ -1,1 +1,3 @@
+livestreamer==1.10.2
 python-twitch==0.2.3
+requests==2.4.1
