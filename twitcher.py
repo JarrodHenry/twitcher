@@ -2,22 +2,22 @@ from twitch import TwitchTV
 from logging import Logger
 
 
-streamers = ['JoinDotaRed', 'RiotGames', 'imaqtpie']
+streamers = ['joindotared', 'imaqtpie', 'riotgames']
 log = Logger('twitch')
 twitch = TwitchTV(log)
 
 
 def main():
     active = []
-    count = 0
+
     for streamer in streamers:
         x = twitch.searchStreams(streamer)
         if x:
-            if x[count]['channel']['name'] is streamer:
-                active.append(x[count])
-                count = count + 1
+            for stream in x:
+                if stream['channel']['name'] == streamer:
+                    active.append(stream)
 
-    for result in x:
+    for result in active:
         print("{0}: {1}".format(result['channel']['name'],
                                 result['channel']['url']))
 
