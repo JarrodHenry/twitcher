@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from twitch import TwitchTV
 from logging import Logger
 import shlex
@@ -28,7 +30,7 @@ def main():
 
     choice = -99
     if count > 0:
-        choice = input("Please select a stream: ")
+        choice = input("Please select a stream (-99 to exit): ")
 
     if int(choice) != -99:
         url = active[int(choice)]['channel']['url']
