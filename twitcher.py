@@ -3,7 +3,8 @@ from logging import Logger
 import shlex
 import subprocess
 
-streamers = ['joindotared', 'imaqtpie', 'riotgames', 'gaugemalamute']
+streamers = ['joindotared', 'imaqtpie', 'riotgames', 'gaugemalamute',
+             'mushisgosu', 'joindotablue']
 log = Logger('twitch')
 twitch = TwitchTV(log)
 
@@ -25,10 +26,16 @@ def main():
                                      result['channel']['url']))
         count = count + 1
 
-    choice = input("Please select a stream: ")
-    url = active[int(choice)]['channel']['url']
-    command = "livestreamer --player mpv {0} high".format(url)
-    subprocess.call(shlex.split(command))
+    choice = -99
+    if count > 0:
+        choice = input("Please select a stream: ")
+
+    if int(choice) != -99:
+        url = active[int(choice)]['channel']['url']
+        command = "livestreamer --player mpv {0} high".format(url)
+        subprocess.call(shlex.split(command))
+    else:
+        print("No active streams.\n")
 
 if __name__ == '__main__':
     main()
