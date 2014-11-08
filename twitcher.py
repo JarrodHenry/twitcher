@@ -6,7 +6,7 @@ import shlex
 import subprocess
 
 streamers = ['joindotared', 'imaqtpie', 'riotgames', 'gaugemalamute',
-             'mushisgosu', 'joindotablue']
+             'mushisgosu', 'joindotablue','beyondthesummit']
 log = Logger('twitch')
 twitch = TwitchTV(log)
 
